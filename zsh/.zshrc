@@ -9,14 +9,15 @@ setopt autocd
 
 zstyle ':completion:*' menu select
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats " ● %b"
-
+zstyle ':vcs_info:git*' formats " ● %b "
 
 PROMPT='%n@%m:%B%(5~|%-1~/…/%3~|%4~)%b${vcs_info_msg_0_}%# '
 
 typeset -U path
 #path /usr/bin/vendor_perl ~/.cabal/bin $path)
-path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
+path=($path ~/.rvm/bin)
+#RVM
+#export PATH="$PATH:$HOME/.rvm/bin"
 
 eval $(keychain --eval --quiet id_ed25519 --agents ssh)
 
@@ -36,14 +37,20 @@ bindkey '^E' end-of-line
 
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
-alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
-alias gblog='/home/cduez/dev/go/src/github.com/cduez/blog'
+alias glong='/home/cduez/dev/longboat'
+alias lg='/home/cduez/dev/longboat/longboat_app'
+alias ce='/home/cduez/dev/longboat/common_engine'
+alias mux="tmuxinator"
+alias focus="bundle exec rspec --tag focus"
+alias agl="ag --ignore-dir=log --ignore-dir=vendor"
+alias be="bundle exec"
 
 export EDITOR=nvim
-export GOPATH=/home/cduez/dev/go
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+#export GOPATH=/home/cduez/dev/go
+#RVM use GEM_HOME
+#export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 
-export HISTSIZE=50000
+export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
@@ -68,11 +75,11 @@ function ton() {
 }
 
 function don() {
-  xrandr --output HDMI1 --auto --left-of LVDS1
+  xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
 }
 
 function doff() {
-  xrandr --output HDMI1 --off
+  xrandr --output HDMI-1-1 --off
 }
 
 function keyy() {
@@ -104,3 +111,5 @@ case $TERM in
     }
     ;;
 esac
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
