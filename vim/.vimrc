@@ -83,19 +83,33 @@ nmap <silent> <c-n> :bn<CR>
 nmap <silent> <c-p> :bp<CR>
 nmap <silent> <c-e> :b#<CR>
 
+"set termencoding=latin1
 "find keycode with cat >/dev/null, ^[ is <esc>
+"or in insert mode ctrl+v then type
+"or sed -n l
 "map <esc>Oc <C-Right>
 "map <esc>Od <C-Left>
 "map <esc>Oa <C-Up>
 "map <esc>Ob <C-Down>
 
+"map <esc>[c <C-S-Right>
+"map <esc>[d <C-S-Left>
+"map <esc>[a <C-S-Up>
+"map <esc>[b <C-S-Down>
+"
+
 map <C-Up> {
 map <C-Down> }
 
-noremap <M-Down> <C-W>j
-noremap <M-Up> <C-W>k
-noremap <M-Right> <C-W>l
-noremap <M-Left> <C-W>h
+map <M-Up> <C-W><C-K>
+map <M-Down> <C-W><C-J>
+map <M-Left> <C-W><C-H>
+map <M-Right> <C-W><C-L>
+
+map <M-S-Up> <C-W>K
+map <M-S-Down> <C-W>J
+map <M-S-Left> <C-W>H
+map <M-S-Right> <C-W>L
 
 nnoremap <C-o> :tabprev<CR>
 nnoremap <C-p> :tabnext<CR>
@@ -115,7 +129,7 @@ autocmd User Rails/**/*.js set sw=4
 match ExtraWhitespace /\s\+$/
 
 let g:ctrlp_map = '<c-f>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
@@ -125,6 +139,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 set cursorline
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --ignore vendor --ignore log'
+endif
 
 "autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 "autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 smarttab shiftround nojoinspaces
