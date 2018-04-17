@@ -39,7 +39,7 @@ alias ll='ls -lh --color=auto'
 alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
 alias gblog='/home/cduez/dev/go/src/github.com/cduez/blog'
 
-export EDITOR=vim
+export EDITOR=nvim
 export GOPATH=/home/cduez/dev/go
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 
