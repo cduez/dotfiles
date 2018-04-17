@@ -99,29 +99,39 @@ bindsym $mod+Shift+q focus child
 bindsym $mod+Shift+w move scratchpad
 bindsym $mod+w scratchpad show
 
-# switch to workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+minus workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
-
 # move focused container to workspace
+#bindsym $mod+ampersand workspace 1
+#bindsym $mod+eacute workspace 2
+#bindsym $mod+quotedbl workspace 3
+#bindsym $mod+apostrophe workspace 4
+#bindsym $mod+parenleft workspace 5
+#bindsym $mod+minus move container to workspace 6
+#bindsym $mod+egrave move container to workspace 7
+#bindsym $mod+underscore move container to workspace 8
+#bindsym $mod+ccedilla move container to workspace 9
+#bindsym $mod+agrave move container to workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# switch to workspace
 bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+eacute move container to workspace 2
+bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -136,12 +146,12 @@ bindsym --release Shift+Print exec scrot -s ~/screenshots/%Y-%m-%d-%H%M%S.jpg
 bindsym $mod+f [class="Firefox" title="Firefox"] focus
 bindsym $mod+o [class="Opera"] focus
 bindsym $mod+t [class="Thunderbird" title="Thunderbird"] focus
-bindsym $mod+i [class="URxvt" title="WeeChat"] focus
+#bindsym $mod+i [class="URxvt" title="WeeChat"] focus
 bindsym $mod+a exec thunar
 
-bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 1 #increase sound volume
-bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 1 #decrease sound volume
-bindsym XF86AudioMute exec pulseaudio-ctl mute # mute sound
+bindsym XF86AudioRaiseVolume exec pavolume volup 1 --quiet #increase sound volume
+bindsym XF86AudioLowerVolume exec pavolume voldown 1 --quiet #decrease sound volume
+bindsym XF86AudioMute exec pavolume mutetoggle # mute sound
 
 
 # resize window (you can also use the mouse for that)
