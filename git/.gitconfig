@@ -27,3 +27,5 @@
 [user]
   name = Cyril Duez
   email = cyril.duez@gmail.com
+[push]
+  default = current
