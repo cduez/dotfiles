@@ -125,12 +125,12 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 set cursorline
-:hi CursorLine cterm=NONE ctermbg=darkgrey
+:hi CursorLine cterm=NONE ctermbg=240
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore vendor --ignore log'
 endif
 
 "autocmd User Rails/**/*.js set sw=4
-"autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 "autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 smarttab shiftround nojoinspaces
