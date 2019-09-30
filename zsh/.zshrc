@@ -48,6 +48,8 @@ export HISTSIZE=50000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc
+
 setopt hist_ignore_all_dups
 
 vim()
