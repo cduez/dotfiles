@@ -64,7 +64,6 @@ filetype plugin indent on
 
 syntax on
 
-
 :set pastetoggle=<F6>
 :imap <F5> <ESC>:NERDTreeToggle<CR>
 :map <F5> :NERDTreeToggle<CR>
@@ -113,7 +112,16 @@ nnoremap <Leader>wf :match<CR>
 :autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 :autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+au BufNewFile,BufRead *.jst setlocal ft=html
 
 match ExtraWhitespace /\s\+$/
 

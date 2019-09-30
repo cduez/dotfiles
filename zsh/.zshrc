@@ -15,9 +15,11 @@ PROMPT='%n@%m:%B%(5~|%-1~/…/%3~|%4~)%b${vcs_info_msg_0_}%# '
 
 typeset -U path
 #path /usr/bin/vendor_perl ~/.cabal/bin $path)
-path=($path ~/.rvm/bin)
+path=($path ~/.rvm/bin ~/.yarn/bin)
 #RVM
 #export PATH="$PATH:$HOME/.rvm/bin"
+#PATH="$HOME/.node_modules/bin:$PATH"
+
 
 eval $(keychain --eval --quiet id_ed25519 --agents ssh)
 
@@ -40,6 +42,13 @@ alias ll='ls -lh --color=auto'
 alias glong='/home/cduez/dev/longboat'
 alias lg='/home/cduez/dev/longboat/longboat_app'
 alias ce='/home/cduez/dev/longboat/common_engine'
+alias et='/home/cduez/dev/longboat/email_templates'
+alias lm='/home/cduez/dev/longboat/longboat_mailer'
+alias re='/home/cduez/dev/longboat/report_engine'
+alias ga='/home/cduez/dev/longboat/gateway_app'
+alias at='/home/cduez/dev/longboat/authoring_tool'
+alias auth='/home/cduez/dev/longboat/authentication_api'
+alias us='/home/cduez/dev/longboat/users_service'
 alias mux="tmuxinator"
 alias focus="bundle exec rspec --tag focus"
 alias agl="ag --ignore-dir=log --ignore-dir=vendor"
@@ -67,18 +76,20 @@ vim()
 }
 
 function toff() {
-  synclient TouchpadOff=1
+  xinput disable "DLL07BE:01 06CB:7A13 Touchpad"
 }
 
 function ton() {
-  synclient TouchpadOff=0
+  xinput enable "DLL07BE:01 06CB:7A13 Touchpad"
 }
 
 function don() {
+  #xrandr --output DP-1-1-1 --auto --right-of eDP-1-1
   xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
 }
 
 function doff() {
+  #xrandr --output DP-1-1-1 --off
   xrandr --output HDMI-1-1 --off
 }
 
@@ -86,6 +97,13 @@ function keyy() {
   KEYB=$(xinput list --id-only "keyboard:TypeMatrix.com USB Keyboard")
   echo "Set layout us and compose to ralt for xinput id=$KEYB"
   setxkbmap -layout us -option 'compose:ralt' -device $KEYB
+}
+
+function loc() {
+   sed -i '/common_engine/c\gem "common_engine", path: "../common_engine"' ~/dev/longboat/longboat_app/Gemfile
+   pushd ~/dev/longboat/longboat_app
+   bundle
+   popd
 }
 
 #------------------------------
@@ -113,3 +131,4 @@ case $TERM in
 esac
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+source /usr/share/nvm/init-nvm.sh
