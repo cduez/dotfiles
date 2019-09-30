@@ -12,6 +12,7 @@
   co = checkout
   df = diff
   ciam = !git add -A && git commit -m
+  fixup = !git add -A && git commit --amend --no-edit
 	lo = log --graph --oneline
 
 [color "status"]
