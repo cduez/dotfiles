@@ -127,10 +127,28 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 set cursorline
 :hi CursorLine cterm=NONE ctermbg=darkgrey
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --ignore vendor --ignore log'
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 
+
+"autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=2
+autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile *.vue setfiletype html
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+cnoreabbrev rg Ack
+cnoreabbrev rgs AckFromSearch
+
 "autocmd User Rails/**/*.js set sw=4
-"autocmd FileType go setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 "autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 smarttab shiftround nojoinspaces
+"
+let g:NERDTreeGlyphReadOnly = "RO"
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeNodeDelimiter = '\x07'
