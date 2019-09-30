@@ -38,6 +38,7 @@ alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
 alias gblog='/home/cduez/dev/go/src/github.com/cduez/blog'
+alias mars='/home/cduez/dev/go/src/github.com/cduez/marslander'
 
 export EDITOR=nvim
 export GOPATH=/home/cduez/dev/go
@@ -58,19 +59,19 @@ vim()
 }
 
 function toff() {
-  synclient TouchpadOff=1
+  xinput disable "DLL075B:01 06CB:76AF Touchpad"
 }
 
 function ton() {
-  synclient TouchpadOff=0
+  xinput enable "DLL075B:01 06CB:76AF Touchpad"
 }
 
 function don() {
-  xrandr --output HDMI1 --auto --left-of LVDS1
+  xrandr --output DP1 --auto --right-of eDP1
 }
 
 function doff() {
-  xrandr --output HDMI1 --off
+  xrandr --output DP1 --off
 }
 
 function keyy() {
