@@ -108,6 +108,7 @@ URxvt.meta8: true
 Xft.hinting: 1
 Xft.antialias: true
 Xft.hintstyle:  hintfull
-//Xft.autohint: 0
+Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.rgba: rgb
+Xft.dpi: 192

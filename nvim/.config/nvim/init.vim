@@ -32,33 +32,16 @@ set incsearch       " While typing a search command, show immediately where the
 set ignorecase      " Ignore case in search patterns.
 
 set smartcase       " Override the 'ignorecase' option if the search pattern
-                    " contains upper case characters.
 
-"set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
-                    " and CTRL-U in Insert mode. This is a list of items,
-                    " separated by commas. Each item allows a way to backspace
-                    " over something.
-
-"set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-                    " automatic formatting is to be done.
-                    "
-                    " letter    meaning when present in 'formatoptions'
-                    " ------ ---------------------------------------
-                    " c         Auto-wrap comments using textwidth, inserting
-                    "           the current comment leader automatically.
-                    " q         Allow formatting of comments with "gq".
-                    " r         Automatically insert the current comment leader
-                    "           after hitting <Enter> in Insert mode.
-                    " t         Auto-wrap text using textwidth (does not apply
-                    "           to comments)
-
-set background=dark " When set to "dark", Vim will try to use colors that look
+set background=light " When set to "dark", Vim will try to use colors that look
                     " good on a dark background. When set to "light", Vim will
                     " try to use colors that look good on a light background.
                     " Any other value is illegal.
 
 set mouse=a         " Enable the use of the mouse.
 
+
+"colorscheme pablo
 
 filetype plugin indent on
 
@@ -87,9 +70,6 @@ nmap <silent> <c-e> :b#<CR>
 "map <esc>[a <C-S-Up>
 "map <esc>[b <C-S-Down>
 "
-
-map <C-Up> {
-map <C-Down> }
 
 map <M-Up> <C-W><C-K>
 map <M-Down> <C-W><C-J>
@@ -125,7 +105,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 set cursorline
-:hi CursorLine cterm=NONE ctermbg=240
+:hi CursorLine cterm=NONE ctermbg=254
 
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
@@ -146,6 +126,3 @@ cnoreabbrev rgs AckFromSearch
 
 let g:NERDTreeGlyphReadOnly = "RO"
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeNodeDelimiter = '\x07'
