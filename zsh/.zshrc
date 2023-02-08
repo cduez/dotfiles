@@ -19,6 +19,7 @@ typeset -U path
 path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
 
 eval $(keychain --eval --quiet id_ed25519 --agents ssh)
+eval "$(rbenv init -)"
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^[Od" backward-word
@@ -69,11 +70,11 @@ function ton() {
 }
 
 function don() {
-  xrandr --output DP1 --auto --right-of eDP1
+  xrandr --output DP-1 --auto --right-of eDP-1
 }
 
 function doff() {
-  xrandr --output DP1 --off
+  xrandr --output DP-1 --off
 }
 
 function keyy() {
@@ -105,3 +106,4 @@ case $TERM in
     }
     ;;
 esac
+source /usr/share/nvm/init-nvm.sh
