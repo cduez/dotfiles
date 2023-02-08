@@ -1,6 +1,6 @@
 /* Couleurs Tango */
-URxvt.foreground: #EEEEEC
-URxvt.background: #2E3436
+/*URxvt.foreground: #EEEEEC
+URxvt.background: #2E3436*/
 URxvt.color0: #2E3436
 URxvt.color1: #CC0000
 URxvt.color2: #4E9A06
@@ -18,8 +18,10 @@ URxvt.color13: #AD7FA8
 URxvt.color14: #34E2E2
 URxvt.color15: #EEEEEC
 
+
 URxvt.transparent: false
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=12
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=18
+!12
 URxvt.letterSpace: -1
 
 URxvt.saveLines: 10000
@@ -108,6 +110,8 @@ URxvt.meta8: true
 Xft.hinting: 1
 Xft.antialias: true
 Xft.hintstyle:  hintfull
-//Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.rgba: rgb
+
+Xft.autohint: 0
+Xft.dpi: 192

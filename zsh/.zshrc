@@ -49,6 +49,8 @@ alias ga='/home/cduez/dev/longboat/gateway_app'
 alias at='/home/cduez/dev/longboat/authoring_tool'
 alias auth='/home/cduez/dev/longboat/authentication_api'
 alias us='/home/cduez/dev/longboat/users_service'
+alias api='/home/cduez/dev/longboat/longboat_v2_api'
+alias cli='/home/cduez/dev/longboat/longboat_v2_cli'
 alias mux="tmuxinator"
 alias focus="bundle exec rspec --tag focus"
 alias agl="ag --ignore-dir=log --ignore-dir=vendor"
@@ -130,5 +132,5 @@ case $TERM in
     ;;
 esac
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 source /usr/share/nvm/init-nvm.sh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
