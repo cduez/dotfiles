@@ -15,7 +15,6 @@ zstyle ':vcs_info:git*' formats " ● %b"
 PROMPT='%n@%m:%B%(5~|%-1~/…/%3~|%4~)%b${vcs_info_msg_0_}%# '
 
 typeset -U path
-#path /usr/bin/vendor_perl ~/.cabal/bin $path)
 path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
 
 eval $(keychain --eval --quiet id_ed25519 --agents ssh)
@@ -42,7 +41,6 @@ alias gblog='/home/cduez/dev/go/src/github.com/cduez/blog'
 alias mars='/home/cduez/dev/go/src/github.com/cduez/marslander'
 
 export EDITOR=nvim
-export GOPATH=/home/cduez/dev/go
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 
 export HISTSIZE=50000
@@ -52,14 +50,6 @@ export SAVEHIST=$HISTSIZE
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc
 
 setopt hist_ignore_all_dups
-
-vim()
-{
-  local STTYOPTS="$(stty --save)"
-  stty stop '' -ixoff
-  command vim "$@"
-  stty "$STTYOPTS"
-}
 
 function toff() {
   xinput disable "DLL075B:01 06CB:76AF Touchpad"
