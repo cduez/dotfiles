@@ -42,6 +42,7 @@ alias mars='/home/cduez/dev/go/src/github.com/cduez/marslander'
 
 export EDITOR=nvim
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+export GOMODCACHE=~/dev/go_cache/pkg/mod
 
 export HISTSIZE=50000
 export HISTFILE="$HOME/.history"
