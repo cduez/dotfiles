@@ -35,7 +35,6 @@ require('packer').startup(function(use)
       vim.cmd('colorscheme onelight')
     end
   })
-  use 'ziglang/zig.vim'
 end)
 
 map('n', '<F5>', ':NERDTreeToggle<CR>')
@@ -61,9 +60,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_create_autocmd({ "FileType go" }, {
-  command = "setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab",
-})
+-- vim.api.nvim_create_autocmd({ "FileType go" }, {
+--  command = "setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab",
+--})
 
 vim.opt.runtimepath:append("/home/cduez/.config/nvim/parsers")
 require'nvim-treesitter.configs'.setup {
@@ -125,3 +124,5 @@ local lsp_flags = {
 --   on_attach = on_attach,
 --   flags = lsp_flags,
 --}
+--
+require 'lspconfig'.gopls.setup{}
