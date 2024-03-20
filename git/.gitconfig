@@ -30,3 +30,29 @@
   email = cyril.duez@advarra.com
 [push]
   default = current
+[pull]
+	rebase = true
+[credential "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/sw12-qa-cirbi-external"]
+  helper = !aws codecommit credential-helper $@ --profile sw12-qa-cirbi
+  useHttpPath = true
+[credential "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/dev01-qa-cirbi-external"]
+  helper = !aws codecommit credential-helper $@ --profile dev01-qa-cirbi
+  useHttpPath = true
+[url "git@github-advarra-engineering:advarra-engineering"]
+  insteadOf = git@github.com:advarra-engineering
+[url "git@github-advarra-engineering:advarra-test"]
+  insteadOf = git@github.com:advarra-test
+[url "git@github-advarra-engineering:advarra-archive"]
+  insteadOf = git@github.com:advarra-archive
+[credential "https://git-codecommit.eu-central-1.amazonaws.com/v1/repos/dev1-qa-lb-external"]
+  helper = !aws codecommit credential-helper $@ --profile dev1-qa-lb
+  useHttpPath = true
+[credential "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/uat-qa-cirbi-external"]
+  helper = !aws codecommit credential-helper $@ --profile uat-qa-cirbi
+  useHttpPath = true
+[credential "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/val1-qa-cirbi-external"]
+  helper = !aws codecommit credential-helper $@ --profile val1-qa-cirbi
+  useHttpPath = true
+[credential "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/scr1-qa-cirbi-external"]
+  helper = !aws codecommit credential-helper $@ --profile scr1-qa-cirbi
+  useHttpPath = true

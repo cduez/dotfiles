@@ -21,7 +21,7 @@ path=($path ~/.rvm/bin ~/.yarn/bin)
 #PATH="$HOME/.node_modules/bin:$PATH"
 
 
-eval $(keychain --eval --quiet id_ed25519 --agents ssh)
+eval $(keychain --eval --quiet id_ed25519 id_ed25519_gh --agents ssh)
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^[Od" backward-word
