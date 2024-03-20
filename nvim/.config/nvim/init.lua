@@ -2,8 +2,6 @@ function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
--- vim.cmd('source ~/.config/nvim/old_config.vim')
-
 local indent = 2
 vim.opt.tabstop = indent
 vim.opt.shiftwidth = indent
@@ -52,5 +50,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
-
-
