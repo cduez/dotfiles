@@ -1,1 +1,1 @@
-OPTIONS=color,autodig,rest_on_space,safe_pet,time,showexp,showscore,race:Human,role:Rogue,gender:male,!autopickup,hilite_pet
+OPTIONS=color,autodig,rest_on_space,safe_pet,time,showexp,showscore,name:Athkatla,race:Human,role:Rogue,gender:male,!autopickup,hilite_pet
