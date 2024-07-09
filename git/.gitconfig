@@ -29,3 +29,5 @@
   email = cyril.duez@gmail.com
 [push]
   default = current
+[init]
+  defaultBranch = main
