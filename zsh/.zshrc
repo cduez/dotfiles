@@ -17,8 +17,8 @@ PROMPT='%n@%m:%B%(5~|%-1~/…/%3~|%4~)%b${vcs_info_msg_0_}%# '
 typeset -U path
 path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
 
-eval $(keychain --eval --quiet id_ed25519 --agents ssh)
-eval "$(rbenv init -)"
+eval $(keychain --eval --quiet id_ed25519)
+eval "$(mise activate zsh)"
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^[Od" backward-word
@@ -37,8 +37,9 @@ bindkey '^E' end-of-line
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
-alias gblog='/home/cduez/dev/go/src/github.com/cduez/blog'
+alias gblog='/home/cduez/dev/blablablog.fr'
 alias mars='/home/cduez/dev/go/src/github.com/cduez/marslander'
+alias be='bundle exec'
 
 export EDITOR=nvim
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')

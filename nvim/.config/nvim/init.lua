@@ -16,11 +16,11 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wildignore:append('*/tmp/*,*.so,*.swp,*.zip')
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 vim.opt.background = 'light'
 vim.cmd('syntax on')
--- vim.cmd(':hi CursorLine cterm=NONE ctermbg=lightgrey')
+vim.cmd(':hi CursorLine cterm=NONE ctermbg=lightgrey')
 
 require('packer').startup(function(use)
   use 'preservim/nerdtree'
@@ -28,14 +28,28 @@ require('packer').startup(function(use)
   use 'mileszs/ack.vim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'neovim/nvim-lspconfig'
-  use({
-    'olimorris/onedarkpro.nvim',
-    config = function()
+  --use({
+  --  'olimorris/onedarkpro.nvim',
+  --  config = function()
       --require("onedark").setup()
-      vim.cmd('colorscheme onelight')
-    end
-  })
+   --   vim.cmd('colorscheme onelight')
+   -- end
+  --})
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+
+  --use 'L3MON4D3/LuaSnip'
+  --use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'sainnhe/edge'
 end)
+
+vim.cmd.colorscheme "edge"
 
 map('n', '<F5>', ':NERDTreeToggle<CR>')
 map('i', '<F5>', '<ESC>:NERDTreeToggle<CR>')
@@ -119,10 +133,52 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- require'lspconfig'.solargraph.setup{}
--- require'lspconfig'.zls.setup{
---   on_attach = on_attach,
---   flags = lsp_flags,
---}
---
-require 'lspconfig'.gopls.setup{}
+local cmp = require'cmp'
+cmp.setup{
+  snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+       { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+--require'lspconfig'.solargraph.setup{
+require'lspconfig'.ruby_lsp.setup{
+ capabilities = capabilities
+}
+require'lspconfig'.zls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+require 'lspconfig'.gopls.setup{
+  capabilities = capabilities
+}
+vim.lsp.enable('ts_ls')

@@ -29,5 +29,13 @@
   email = cyril.duez@gmail.com
 [push]
   default = current
+	autoSetupRemote = true
 [init]
-  defaultBranch = main
+	defaultBranch = main
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	renames = true
