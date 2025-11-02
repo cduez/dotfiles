@@ -23,17 +23,18 @@ vim.cmd('syntax on')
 vim.cmd(':hi CursorLine cterm=NONE ctermbg=lightgrey')
 
 require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
   use 'preservim/nerdtree'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'neovim/nvim-lspconfig'
-  --use({
-  --  'olimorris/onedarkpro.nvim',
-  --  config = function()
-      --require("onedark").setup()
+  use({
+    --"loctvl842/monokai-pro.nvim",
+    "sainnhe/sonokai",
+    config = function()
+      require("sonokai").setup()
    --   vim.cmd('colorscheme onelight')
-   -- end
-  --})
-  use 'neovim/nvim-lspconfig'
+    end
+  })
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -41,14 +42,15 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-  use 'sainnhe/edge'
+  -- use 'sainnhe/edge'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 end)
 
-vim.cmd.colorscheme "edge"
+vim.cmd.colorscheme "sonokai"
+vim.cmd("hi Normal guibg=#272822")
 
 map('n', '<F5>', ':NERDTreeToggle<CR>')
 map('i', '<F5>', '<ESC>:NERDTreeToggle<CR>')
@@ -63,7 +65,7 @@ map('', '<C-d>', ':tabclose<CR>')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-f>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<c-f>', builtin.resume, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<c-h>', builtin.resume, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<c-g>', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<c-h>', builtin.grep_string, { desc = 'Telescope grep string' })
 
