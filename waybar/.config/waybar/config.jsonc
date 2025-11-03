@@ -116,13 +116,17 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
+        "interval": 5,
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "alacritty -e btop"
     },
     "memory": {
+        "interval": 5,
         "format": "{}% "
     },
     "temperature": {
+        "interval": 5,
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
@@ -168,7 +172,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "alacritty -e impala"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
