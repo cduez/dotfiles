@@ -7,8 +7,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
-        //"hyprland/submap",
+        "hyprland/workspaces",
+        "hyprland/submap"
         //"custom/media"
     ],
     "modules-center": [
@@ -137,7 +137,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-	"format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
+        "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
     },
     "battery": {
         "states": {
@@ -152,7 +152,8 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "interval": 5
     },
     "power-profiles-daemon": {
       "format": "{icon}",
