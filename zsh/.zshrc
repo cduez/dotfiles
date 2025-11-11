@@ -38,8 +38,6 @@ alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
 alias gblog='/home/cduez/dev/blablablog.fr'
-alias mars='/home/cduez/dev/go/src/github.com/cduez/marslander'
-alias be='bundle exec'
 
 export EDITOR=nvim
 export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
@@ -52,22 +50,6 @@ export SAVEHIST=$HISTSIZE
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc
 
 setopt hist_ignore_all_dups
-
-function toff() {
-  xinput disable "DLL075B:01 06CB:76AF Touchpad"
-}
-
-function ton() {
-  xinput enable "DLL075B:01 06CB:76AF Touchpad"
-}
-
-function don() {
-  xrandr --output DP-1 --auto --right-of eDP-1
-}
-
-function doff() {
-  xrandr --output DP-1 --off
-}
 
 function keyy() {
   KEYB=$(xinput list --id-only "keyboard:TypeMatrix.com USB Keyboard")
@@ -98,4 +80,3 @@ case $TERM in
     }
     ;;
 esac
-source /usr/share/nvm/init-nvm.sh
