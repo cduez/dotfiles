@@ -1,1 +1,1 @@
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec Hyprland
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec start-hyprland

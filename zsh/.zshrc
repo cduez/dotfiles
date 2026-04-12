@@ -15,7 +15,7 @@ zstyle ':vcs_info:git*' formats " ● %b"
 PROMPT='%n@%m:%B%(5~|%-1~/…/%3~|%4~)%b${vcs_info_msg_0_}%# '
 
 typeset -U path
-path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
+# path=("$(ruby -e 'puts Gem.user_dir')/bin" ~/dev/go/bin ~/dev/bash/ ~/.cargo/bin $path)
 
 eval $(keychain --eval --quiet id_ed25519)
 eval "$(mise activate zsh)"
@@ -40,7 +40,7 @@ alias git='LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 git'
 alias gblog='/home/cduez/dev/blablablog.fr'
 
 export EDITOR=nvim
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+# export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 export GOPATH=~/dev/go
 
 export HISTSIZE=50000
