@@ -27,14 +27,7 @@ require('packer').startup(function(use)
   use 'preservim/nerdtree'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'neovim/nvim-lspconfig'
-  use({
-    --"loctvl842/monokai-pro.nvim",
-    "sainnhe/sonokai",
-    config = function()
-      require("sonokai").setup()
-   --   vim.cmd('colorscheme onelight')
-    end
-  })
+  use 'sainnhe/sonokai'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -42,12 +35,14 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-  -- use 'sainnhe/edge'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim', tag = 'v0.2.2',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 end)
+
+vim.g.clipboard = 'wl-copy'
 
 vim.cmd.colorscheme "sonokai"
 vim.cmd("hi Normal guibg=#272822")
@@ -63,11 +58,15 @@ map('', '<C-p>', ':tabnext<CR>')
 map('', '<C-t>', ':tabnew<CR>')
 map('', '<C-d>', ':tabclose<CR>')
 
+map('', '<C-]>', '<C-]>')
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-f>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<c-h>', builtin.resume, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<c-g>', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<c-h>', builtin.grep_string, { desc = 'Telescope grep string' })
+
+require('telescope').load_extension('fzf')
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
@@ -80,21 +79,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.opt.runtimepath:append("/home/cduez/.config/nvim/parsers")
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "ruby", "lua" },
-  sync_install = false,
-  auto_install = true,
-  parser_install_dir = "/home/cduez/.config/nvim/parsers",
-
-  highlight = {
-    enable = true,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+require('nvim-treesitter').setup {
+  install_dir = "/home/cduez/.config/nvim/parsers"
 }
 
 local opts = { noremap=true, silent=true }
@@ -116,7 +102,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
